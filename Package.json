@@ -1,0 +1,9 @@
+{
+  "name": "nl.brandonvdongen.pfc.toolkit",
+  "version": "0.1.0",
+  "displayName": "PFC.Toolkit",
+  "unity": "2019.4",
+  "description": "A package manager for all the PFC Unity Packages",
+  "type": "tool",
+  "hideInEditor": false
+}
