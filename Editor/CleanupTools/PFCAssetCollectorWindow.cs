@@ -71,7 +71,7 @@ namespace PFC.Toolkit.CleanupTools {
 
         private static VisualElement GetPreferences() {
             VisualElement root = new VisualElement();
-            foreach (PFCPreferenceHelper setting in PFCPreferenceHelper.Preferences.Values) {
+            foreach (PFCPreferenceHelpers setting in PFCPreferenceHelpers.Preferences.Values) {
                 if (setting is BoolPreferenceHandler) {
                     BoolPreferenceHandler boolSetting = setting as BoolPreferenceHandler;
                     Toggle btn = new Toggle {
