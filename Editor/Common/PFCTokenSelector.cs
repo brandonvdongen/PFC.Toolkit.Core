@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace PFC.Core {
+namespace PFC.Toolkit.Core {
     public class PFCTokenSelector {
 
         private string _selectedKey;

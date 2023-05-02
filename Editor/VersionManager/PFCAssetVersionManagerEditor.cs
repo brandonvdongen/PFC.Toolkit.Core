@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace PFC.Core.VersionManager {
+namespace PFC.Toolkit.Core.VersionManager {
     [CustomEditor(typeof(PFCAssetVersionManager))]
     public class PFCAssetVersionManagerEditor : Editor {
         private bool ShowSettings = false;

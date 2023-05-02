@@ -1,6 +1,7 @@
-﻿using UnityEditor;
+﻿using PFC.Toolkit.Core.Helpers;
+using UnityEditor;
 using UnityEngine;
-namespace PFC.Core {
+namespace PFC.Toolkit.Core {
     [CustomEditor(typeof(PFCSettings))]
     public class PFCSettingsEditor : Editor {
         private PFCSettings settings;

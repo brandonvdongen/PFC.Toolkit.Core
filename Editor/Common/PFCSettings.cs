@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-namespace PFC.Core {
+namespace PFC.Toolkit.Core {
 
 #if PFC_DEBUG
     [CreateAssetMenu(fileName = "Settings", menuName = "PFC/DEBUG/Settings", order = 0)]

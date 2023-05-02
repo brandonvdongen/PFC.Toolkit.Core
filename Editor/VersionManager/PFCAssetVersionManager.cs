@@ -1,4 +1,4 @@
-﻿using PFC.Core.Helpers;
+﻿using PFC.Toolkit.Core.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 
-namespace PFC.Core.VersionManager {
+namespace PFC.Toolkit.Core.VersionManager {
 #if PFC_DEBUG
     [CreateAssetMenu(fileName = "VersionManager", menuName = "PFC/DEBUG/VersionManager")]
 #endif

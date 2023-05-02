@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace PFC.Core {
+namespace PFC.Toolkit.Core.Helpers {
     public class PFCGUI {
 
         public static void HorizontalLine(Color? color = null, float height = 0.5f) {

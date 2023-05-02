@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 
-namespace PFC.Core.Helpers {
+namespace PFC.Toolkit.Core.Helpers {
     public class GitHubHelpers {
 
         public static async Task<HttpResponseMessage> CreateGitHubReleaseWithAsset(string owner, string repo, string token, string tag, bool prerelease, string name, string description, string unityPackagePath) {
