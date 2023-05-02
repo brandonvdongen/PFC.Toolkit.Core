@@ -14,7 +14,7 @@ using VRC.SDK3.Avatars.ScriptableObjects;
 #endif
 
 namespace PFC.Toolkit.CleanupTools {
-    public class AssetCollectorMenu : EditorWindow {
+    public class PFCAssetCollectorWindow : EditorWindow {
         private bool validSelection { get { return Selection.activeObject is GameObject; } }
 
         private static BoolPreferenceHandler includeTextures = new BoolPreferenceHandler("Include Textures", "includeTextures", true);
@@ -31,9 +31,9 @@ namespace PFC.Toolkit.CleanupTools {
         private Button btn_export;
         private Label selectionLabel;
 
-        [MenuItem("PFCTools2/Cleanup/Asset Collector")]
+        [MenuItem("PFCToolkit/Cleanup/Asset Collector")]
         public static void OpenWindow() {
-            AssetCollectorMenu wnd = GetWindow<AssetCollectorMenu>();
+            PFCAssetCollectorWindow wnd = GetWindow<PFCAssetCollectorWindow>();
             wnd.titleContent = new GUIContent("Asset Collector");
             wnd.minSize = new Vector2(321, 200);
             wnd.maxSize = new Vector2(321, 200);
@@ -71,7 +71,7 @@ namespace PFC.Toolkit.CleanupTools {
 
         private static VisualElement GetPreferences() {
             VisualElement root = new VisualElement();
-            foreach (PreferenceHandler setting in PreferenceHandler.Preferences.Values) {
+            foreach (PFCPreferenceHelper setting in PFCPreferenceHelper.Preferences.Values) {
                 if (setting is BoolPreferenceHandler) {
                     BoolPreferenceHandler boolSetting = setting as BoolPreferenceHandler;
                     Toggle btn = new Toggle {

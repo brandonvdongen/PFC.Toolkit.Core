@@ -4,20 +4,20 @@ using UnityEditor;
 namespace PFC.Toolkit.Core.Helpers {
 
     [InitializeOnLoad]
-    public abstract class PreferenceHandler {
-        public static Dictionary<string, PreferenceHandler> Preferences = new Dictionary<string, PreferenceHandler>();
+    public abstract class PFCPreferenceHelper {
+        public static Dictionary<string, PFCPreferenceHelper> Preferences = new Dictionary<string, PFCPreferenceHelper>();
 
         internal const string PREF_PREFIX = "PFCTOOLS2PREF";
         public string path = "pfc.unassigned";
         public string name = "pfc.unnamed";
 
-        public PreferenceHandler(string SettingName, string SettingPath) {
+        public PFCPreferenceHelper(string SettingName, string SettingPath) {
             this.path = SettingPath;
             this.name = SettingName;
             Preferences.Add(SettingPath, this);
         }
     }
-    public class BoolPreferenceHandler : PreferenceHandler {
+    public class BoolPreferenceHandler : PFCPreferenceHelper {
 
         public bool cachedValue = false;
         public bool defaultValue = false;

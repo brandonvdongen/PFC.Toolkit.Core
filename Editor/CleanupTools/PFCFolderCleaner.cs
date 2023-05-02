@@ -4,8 +4,8 @@ using UnityEditor;
 using UnityEngine;
 
 namespace PFC.Toolkit.CleanupTools {
-    public class FolderCleaner {
-        [MenuItem("PFCTools2/Cleanup/Remove All Empty Folders")]
+    public class PFCFolderCleaner {
+        [MenuItem("PFCToolkit/Cleanup/Remove All Empty Folders")]
         public static void removeAll() {
             removeEmptyFolders();
         }

@@ -83,10 +83,10 @@ namespace PFC.Toolkit.Core.VersionManager {
                 string tag = nextVersion.ToString();
                 if (_versionIsBeta) {
                     tag = "LatestBeta";
-                    HttpResponseMessage deleteResponse = await GitHubHelpers.DeleteReleaseWithTag(owner, repo, PFCSettings.ActiveInstance.GetToken(this._tokenKey), tag);
+                    HttpResponseMessage deleteResponse = await PFCGitHubHelpers.DeleteReleaseWithTag(owner, repo, PFCSettings.ActiveInstance.GetToken(this._tokenKey), tag);
                     Debug.Log($"Delete: {deleteResponse.StatusCode}\n{prettyPrint(await deleteResponse.Content.ReadAsStringAsync())}");
                 }
-                HttpResponseMessage response = await GitHubHelpers.CreateGitHubReleaseWithAsset(owner, repo, PFCSettings.ActiveInstance.GetToken(this._tokenKey), tag, _versionIsBeta, $"{name} v{nextVersion}", newChangelog, assetPath);
+                HttpResponseMessage response = await PFCGitHubHelpers.CreateGitHubReleaseWithAsset(owner, repo, PFCSettings.ActiveInstance.GetToken(this._tokenKey), tag, _versionIsBeta, $"{name} v{nextVersion}", newChangelog, assetPath);
                 Debug.Log($"Upload: {response.StatusCode}\n{prettyPrint(await response.Content.ReadAsStringAsync())}");
             }
             catch (Exception ex) {
@@ -101,7 +101,7 @@ namespace PFC.Toolkit.Core.VersionManager {
 
         public async Task GetLatestPackageVersion() {
 
-            HttpResponseMessage latestrelease = await GitHubHelpers.GetLatestGitHubRelease(owner, repo);
+            HttpResponseMessage latestrelease = await PFCGitHubHelpers.GetLatestGitHubRelease(owner, repo);
             string jsonString = await latestrelease.Content.ReadAsStringAsync();
             Debug.Log("GetUpdate:" + prettyPrint(jsonString));
             Match tagNameMatch = Regex.Match(jsonString, "\"tag_name\":\"([^\"]+)\"");
@@ -122,7 +122,7 @@ namespace PFC.Toolkit.Core.VersionManager {
         }
 
         public async Task DeletedReleaseByTag(string tag) {
-            HttpResponseMessage deleted = await GitHubHelpers.DeleteReleaseWithTag(owner, repo, PFCSettings.ActiveInstance.GetToken(this._tokenKey), tag);
+            HttpResponseMessage deleted = await PFCGitHubHelpers.DeleteReleaseWithTag(owner, repo, PFCSettings.ActiveInstance.GetToken(this._tokenKey), tag);
             string jsonString = await deleted.Content.ReadAsStringAsync();
             Debug.Log("DeleteVersion:" + prettyPrint(jsonString));
         }
