@@ -8,7 +8,7 @@ using UnityEditor;
 using UnityEngine;
 
 namespace PFC.Toolkit.Core.Helpers {
-    public class PFCGitHubHelpers {
+    public class PFCGitHubHelper {
 
         public static async Task<HttpResponseMessage> CreateGitHubReleaseWithAsset(string owner, string repo, string token, string tag, bool prerelease, string name, string description, string unityPackagePath) {
             HttpClient client = new HttpClient {
@@ -18,6 +18,11 @@ namespace PFC.Toolkit.Core.Helpers {
             client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("unity", Application.unityVersion.ToString()));
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", token);
+
+            if (string.IsNullOrEmpty(description)) {
+                description = "\n\n";
+            }
+            description += $"\n\nzipSHA256:{PFCHashHelper.CalculateSHA256(unityPackagePath)}";
 
             GitReleaseData release = new GitReleaseData() {
                 tag_name = tag,

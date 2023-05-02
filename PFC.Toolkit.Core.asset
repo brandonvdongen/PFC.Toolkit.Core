@@ -18,9 +18,9 @@ MonoBehaviour:
   _versionIsBeta: 1
   _latestVersion: 1.0.0.0
   owner: brandonvdongen
-  repo: PFC.Toolkit
+  repo: PFC.Toolkit.Core
   FilePaths:
-  - Packages\nl.brandonvdongen.pfc.toolkit
+  - Packages\nl.brandonvdongen.pfc.toolkit.core
   _currentChangelog: 
   newChangelog: '1.0.0.1
 
