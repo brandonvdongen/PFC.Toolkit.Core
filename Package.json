@@ -1,11 +1,26 @@
 {
   "name": "nl.brandonvdongen.pfc.toolkit.core",
-  "version": "1.0.0",
-  "displayName": "PFC.Toolkit.Core",
-  "unity": "2019.4",
+  "version": "1.0.1",
   "description": "A package manager for all the PFC Unity Packages",
-  "type": "tool",
+  "displayName": "PFC.Toolkit.Core",
+  "author": {
+    "name": "PF_Cactus",
+    "email": "brandonvdongen@hotmail.com",
+    "url": "brandonvdongen.nl"
+  },
   "dependencies": {
-    "com.vrchat.avatars": "3.1.13"
-  }
+    "com.unity.nuget.newtonsoft-json": "2.0.2"
+  },
+  "gitDependencies": {},
+  "vpmDependencies": {
+    "com.vrchat.avatars": "3.2.0"
+  },
+  "legacyFolders": {},
+  "legacyFiles": {},
+  "url": "",
+  "localPath": "Packages/nl.brandonvdongen.pfc.toolkit.core/VersionControl.asset",
+  "repo": "brandonvdongen/PFC.Toolkit.Core",
+  "repoTokenID": "PFC.Global",
+  "zipSHA256": "564e80d0872e97cf84ec2857ee2aa709af58d29543ffa6bafdc40bdf8f6b6b69",
+  "headers": {}
 }

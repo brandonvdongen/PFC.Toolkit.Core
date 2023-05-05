@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:Button text="Refresh" name="refresh" />
+    <ui:VisualElement name="packageSelector" style="height: auto;" />
+    <ui:Foldout text="Basic Info" value="true">
+        <ui:TextField picking-mode="Ignore" label="Name" value="filler text" text="filler text" name="name" binding-path="name" />
+        <ui:TextField picking-mode="Ignore" label="Display Name" value="filler text" text="filler text" name="displayName" />
+        <ui:TextField picking-mode="Ignore" label="Version" value="filler text" text="filler text" />
+        <ui:TextField picking-mode="Ignore" label="Description" value="filler text" text="filler text" multiline="true" />
+    </ui:Foldout>
+    <ui:Foldout text="Foldout">
+        <ui:TextField picking-mode="Ignore" label="Name" value="filler text" text="filler text" />
+        <ui:TextField picking-mode="Ignore" label="Email" value="filler text" text="filler text" />
+        <ui:TextField picking-mode="Ignore" label="URL" value="filler text" text="filler text" />
+    </ui:Foldout>
+    <ui:ListView focusable="true" tabindex="0" />
+</ui:UXML>

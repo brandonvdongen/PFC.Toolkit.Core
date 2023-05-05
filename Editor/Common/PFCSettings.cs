@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 namespace PFC.Toolkit.Core {
@@ -6,83 +8,35 @@ namespace PFC.Toolkit.Core {
 #if PFC_DEBUG
     [CreateAssetMenu(fileName = "Settings", menuName = "PFC/DEBUG/Settings", order = 0)]
 #endif
-    public class PFCSettings : ScriptableObject {
-        private static PFCSettings _activeInstance;
+    public class PFCSettings : ScriptableObject, ISerializationCallbackReceiver {
 
-        public static PFCSettings ActiveInstance {
-            get {
-                return _activeInstance;
-            }
-        }
+        [JsonProperty("Tokens")]
+        public Dictionary<string, string> Tokens = new Dictionary<string, string>();
 
-        private void OnEnable() {
-            if (_activeInstance == null) { _activeInstance = this; }
-        }
+        [JsonIgnore]
         [SerializeField]
-        public string[] TokensKeys;
-        [SerializeField]
-        public string[] TokensValues;
+        public string SerializedData = "";
 
-        public string GetToken(string key) {
-            List<string> keys = new List<string>(TokensKeys);
-            int i = keys.IndexOf(key);
-            if (i != -1) {
-                return TokensValues[i];
+        [JsonIgnore]
+        [NonSerialized]
+        private static List<PFCSettings> Settings = new List<PFCSettings>();
+        public static ref List<PFCSettings> GetSettingFiles() {
+            Settings.Clear();
+            string[] guids = AssetDatabase.FindAssets($"t:{nameof(PFCSettings)}");
+            foreach (string guid in guids) {
+                string path = AssetDatabase.GUIDToAssetPath(guid);
+                PFCSettings instance = AssetDatabase.LoadAssetAtPath<PFCSettings>(path);
+                Settings.Add(instance);
             }
-            else {
-                return string.Empty;
-            }
+            return ref Settings;
         }
 
-        public int GetTokenIndex(string key) {
-            List<string> keys = new List<string>(TokensKeys);
-            return keys.IndexOf(key);
+        public void OnBeforeSerialize() {
+            SerializedData = JsonConvert.SerializeObject(Tokens);
+
         }
-
-        public void SetToken(string key, string token) {
-            if (key == string.Empty) {
-                return;
-            }
-
-            List<string> keys = new List<string>(TokensKeys);
-            List<string> values = new List<string>(TokensValues);
-
-            int i = keys.IndexOf(key);
-            Debug.Log($"found {key} at {i}");
-            if (i == -1) {
-                keys.Add(key);
-                values.Add(token);
-            }
-            else {
-                values[i] = token;
-            }
-
-            if (token == string.Empty) {
-                keys.RemoveAt(i);
-                values.RemoveAt(i);
-            }
-
-            TokensKeys = keys.ToArray();
-            TokensValues = values.ToArray();
-            EditorUtility.SetDirty(this);
-        }
-
-        public void RemoveToken(string key) {
-            SetToken(key, string.Empty);
-        }
-
-        public static void DrawSettingSelector() {
-            EditorGUILayout.BeginHorizontal();
-            PFCSettings lastInstance = _activeInstance;
-            _activeInstance = EditorGUILayout.ObjectField("Settings:", _activeInstance, typeof(PFCSettings), false) as PFCSettings;
-            if (_activeInstance == null) {
-                string[] guids = AssetDatabase.FindAssets($"t:{nameof(PFCSettings)}");
-                if (guids.Length > 0) {
-                    string path = AssetDatabase.GUIDToAssetPath(guids[0]);
-                    _activeInstance = AssetDatabase.LoadAssetAtPath<PFCSettings>(path);
-                }
-            }
-            EditorGUILayout.EndHorizontal();
+        public void OnAfterDeserialize() {
+            JsonConvert.PopulateObject(SerializedData, Tokens);
         }
     }
 }

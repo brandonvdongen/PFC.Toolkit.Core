@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: addfa42fe85397c40a868165833ac285, type: 3}
+  m_Name: VersionControl
+  m_EditorClassIdentifier: 
+  PackageFile: {fileID: 8385607101436470782, guid: 17c8d9065bd640f45995d2942c2a99cb,
+    type: 3}
+  PackageInfo:
+    Name: nl.brandonvdongen.pfc.toolkit.core
+    Version: 1.0.1
+    Description: A package manager for all the PFC Unity Packages
+    DisplayName: PFC.Toolkit.Core
+    Author:
+      name: PF_Cactus
+      email: brandonvdongen@hotmail.com
+      url: brandonvdongen.nl
+    Url: 
+    LocalPath: Packages/nl.brandonvdongen.pfc.toolkit.core/VersionControl.asset
+    Repo: 
+    TokenID: Keys
+    ZipSHA256: 07e62730dae5e9d9e99eba01e279f0c03f808afa98b7f9b3afafd7006a82da01

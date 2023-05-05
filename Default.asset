@@ -10,9 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49dc3077f17952a4db2ea49585adeac6, type: 3}
-  m_Name: Settings
+  m_Name: Default
   m_EditorClassIdentifier: 
-  TokensKeys:
-  - PFC.None
-  TokensValues:
-  - Fuck
+  TokensKeys: []
+  TokensValues: []
